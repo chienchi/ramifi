@@ -109,7 +109,7 @@ cd tests
 
 ## Data visualization
 
-The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into IGV.
+The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into [IGV](https://software.broadinstitute.org/software/igv/).
 
 Example:
 ![Screen Shot 2022-06-02 at 2 43 36 PM](https://user-images.githubusercontent.com/737589/171769383-d4ca6cb8-8be8-4270-8dd9-b4cd33e5807e.png)
