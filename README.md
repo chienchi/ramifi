@@ -1,6 +1,6 @@
 # RAMIFI
 
-<ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) and output recombinant reads in .bam and .tsv file with associated stats file. 
+<ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) and output recombinant and parents reads in .bam and .tsv file with associated stats file. 
 
 ## Dependencies
 
@@ -127,4 +127,4 @@ This work is currently unpublished. If you are making use of this package, we wo
 
 ## License
 
-See the LICENSE file included in the RAMIFI distribution.
+See the [LICENSE](https://github.com/chienchi/ramifi/blob/main/LICENSE) file included in the RAMIFI distribution.
