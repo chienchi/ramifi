@@ -15,7 +15,8 @@ import logging
 toolname = os.path.basename(__file__)
 bin_dir = os.path.abspath(os.path.dirname(__file__))
 cwd = os.getcwd()
-
+sys.path.append(bin_dir)
+from __init__ import __version__
 
 class SmartFormatter(ap.HelpFormatter):
     def _split_lines(self, text, width):
@@ -45,6 +46,7 @@ def setup_argparse():
     
     parser.add_argument('--verbose', action='store_true', 
                         help='Show more infomration in log')
+    parser.add_argument('--version', action='version', version='%(prog)s v{version}'.format(version=__version__))
 
     inGrp = parser.add_argument_group('Input')
     inGrp.add_argument(
