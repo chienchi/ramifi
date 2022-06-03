@@ -1,4 +1,4 @@
-# ramifi
+# RAMIFI
 
 <ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder
 
@@ -111,8 +111,19 @@ cd tests
 
 The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into IGV.
 
+Example:
+![Screen Shot 2022-06-02 at 2 43 36 PM](https://user-images.githubusercontent.com/737589/171769383-d4ca6cb8-8be8-4270-8dd9-b4cd33e5807e.png)
+
 ## Remove package:
 
 ```
 pip uninstall ramifi
 ```
+
+## Citing RAMIFI
+
+This work is currently unpublished. If you are making use of this package, we would appreciate if you gave credit to our repository.
+
+## License
+
+See the LICENSE file included in the RAMIFI distribution.
