@@ -1,6 +1,6 @@
 #!/usr/bin/env python3 
 """
-This file is a convenience wrapper for running runbioai directly from the source tree. By
+This file is a convenience wrapper for running ramifi directly from the source tree. By
 executing `bin/ramifi`, users can run ramifi without installing it. (but all requirements are fulfilled.)
 """
 import sys
