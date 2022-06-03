@@ -55,8 +55,8 @@ optional arguments:
   --refacc [STR]        reference accession used in bam [default: NC_045512.2]
   --minMixAF [FLOAT]    minimum alleic frequency for checking mixed mutations on vcf [default:0.2]
   --maxMixAF [FLOAT]    maximum alleic frequency for checking mixed mutations on vcf [default:0.8]
-  --minMixed_n [INT]    threadhold of mixed mutations count for vcf.
-  --minReadCount [INT]  threadhold of read with variant count when no vcf provided.
+  --minMixed_n [INT]    threshold of mixed mutations count for vcf.
+  --minReadCount [INT]  threshold of read with variant count when no vcf provided.
   --lineageMutation [FILE]
                         lineage mutation json file [default: variant_mutation.json]
   --variantMutation [FILE]
