@@ -24,7 +24,7 @@ echo "Running Test ..."
 rm -rf $tempdir
 mkdir -p $tempdir
 cd $tempdir
-$rootdir/../ramifi/ramifi --verbose --bam $rootdir/input/test.sort.bam --refacc NC_045512.2 || true
-#$rootdir/../ramifi/ramifi --verbose --vcf $rootdir/input/test.vcf --bam $rootdir/input/test.sort.bam --refacc NC_045512.2 || true
+$rootdir/../bin/ramifi --verbose --bam $rootdir/input/test.sort.bam --refacc NC_045512.2 || true
+#$rootdir/../bin/ramifi --verbose --vcf $rootdir/input/test.vcf --bam $rootdir/input/test.sort.bam --refacc NC_045512.2 || true
 
 test_result;
