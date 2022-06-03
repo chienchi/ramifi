@@ -1,6 +1,6 @@
 # RAMIFI
 
-<ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder
+<ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) and output recombinant reads in .bam and .tsv file with associated stats file. 
 
 ## Dependencies
 
@@ -11,6 +11,7 @@
 ### Python packages
 - [pandas >=1.2.4](https://pandas.pydata.org/) 
 - [pysam >= 0.16.0.1](https://github.com/pysam-developers/pysam)
+- [importlib-resources>=5.7.1](https://pypi.org/project/importlib-resources/)
 
 #### Optional packages
 - [plotly >=4.7.1](https://plotly.com/python/)
