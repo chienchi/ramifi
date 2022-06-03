@@ -100,8 +100,8 @@ cd tests
 |HMVN7DRXY:2:2153:21802:16078 |  21566|21859| {21575: ['ref of  Iota'], 21600: ['ref of  Epsilon'], 21614: ['ref of  Gamma'], 21618: ['Delta'], 21621: ['ref of  Gamma'], 21786: ['ref of  Lambda'], 21789: ['ref of  Lambda'], 21801: ['ref of  Beta'], 21846: ['Iota', 'Mu', 'Omicron']}  |  recombinant     |
 |HMVN7DRXY:2:2166:28574:36229 |  21732|21883| {21762: ['Eta', 'Omicron'], 21786: ['ref of  Lambda'], 21789: ['ref of  Lambda'], 21801: ['ref of  Beta'], 21846: ['Iota', 'Mu', 'Omicron']}                                                                                                  |  parent Omicron  |
 |HMVN7DRXY:2:2108:19795:22373 |  22605|22717| {22679: ['ref of  Omicron'], 22686: ['ref of  Omicron']}                                                                                                                                                                                      |  parent Delta    |
-|
-|etc ...
+|                             |
+|etc ...                      |
 
 -- recombinant_reads.bam
 
