@@ -90,18 +90,19 @@ cd tests
 
 -- recombinant_reads.stats:  counts
 
-| total  | mapped | unmapped | mutation_reads | parents     | recomb_reads | parent1_reads | parent2_reads | recomb_perc |
-|--------|--------|----------|----------------|-------------|--------------|---------------|---------------|-------------|
-| 64355  | 64355  |   0      |  12075         |Delta,Omicron|   249        |  617          |     376       | 20.048309178|
+| total  | mapped | unmapped | mutation_reads | parents     | recomb1_reads | recomb2_reads | recombx_reads | parent1_reads | parent2_reads | recomb1_perc| recomb2_perc | recombx_perc |
+|--------|--------|----------|----------------|-------------|---------------|---------------|---------------|---------------|---------------|-------------|--------------|--------------|
+| 64355  | 64355  |   0      |  12075         |Delta,Omicron|   131         | 103           |     15        |  617          |     376       | 10.5475040  | 8.293075684  | 1.2077294685 |
 
 
 -- recombinant_reads.tsv
 |    read_name                | start | end | mutaions_json                                                                                                                                                                                                                                 |  note            |
 |-----------------------------|-------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-|HMVN7DRXY:2:2153:21802:16078 |  21566|21859| {21575: ['ref of  Iota'], 21600: ['ref of  Epsilon'], 21614: ['ref of  Gamma'], 21618: ['Delta'], 21621: ['ref of  Gamma'], 21786: ['ref of  Lambda'], 21789: ['ref of  Lambda'], 21801: ['ref of  Beta'], 21846: ['Iota', 'Mu', 'Omicron']}  |  recombinant     |
-|HMVN7DRXY:2:2166:28574:36229 |  21732|21883| {21762: ['Eta', 'Omicron'], 21786: ['ref of  Lambda'], 21789: ['ref of  Lambda'], 21801: ['ref of  Beta'], 21846: ['Iota', 'Mu', 'Omicron']}                                                                                                  |  parent Omicron  |
-|HMVN7DRXY:2:2108:19795:22373 |  22605|22717| {22679: ['ref of  Omicron'], 22686: ['ref of  Omicron']}                                                                                                                                                                                      |  parent Delta    |
-|                             |
+|HMVN7DRXY:2:2153:21802:16078 |  21566|21859| {21618: ['Delta'], 21846: ['Iota', 'Mu', 'Omicron']}                                                                                                                                                                                          |  recombinant 2   |
+|HMVN7DRXY:2:2166:28574:36229 |  21732|21883| {21762: ['Eta', 'Omicron'], 21846: ['Iota', 'Mu', 'Omicron']}                                                                                                                                                                                 |  parent Omicron  |
+|HMVN7DRXY:2:2215:29749:15217 |  22867|22994| {22917: ['Delta', 'Epsilon', 'Kappa'], 22992: ['ref of Omicron']}                                                                                                                                                                             |  parent Delta    |
+|HMVN7DRXY:2:2105:30572:25160 |  22865|23023| {22917: ['ref of Delta Epsilon Kappa'], 22992: ['ref of Omicron'], 22995: ['Delta', 'Omicron'], 23013: ['ref of Omicron']}                                                                                                                    |  recombinant 1   | 
+|HMVN7DRXY:2:2127:18304:18850 |  24058|24518| {24130: ['Omicron'], 24469: ['ref of Omicron'], 24503: ['Omicron']}                                                                                                                                                                           |  recombinant x   |
 |etc ...                      |
 
 -- recombinant_reads.bam

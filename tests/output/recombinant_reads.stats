@@ -1,2 +1,2 @@
-total	mapped	unmapped	mutation_reads	parents	recomb_reads	parent1_reads	parent2_reads	recomb_perc
-64355	64355	0	12075	Delta,Omicron	249	617	376	20.048309178743963
+total	mapped	unmapped	mutation_reads	parents	recomb1_reads	recomb2_reads	recombx_reads	parent1_reads	parent2_reads	recomb1_perc	recomb2_perc	recombx_perc
+64355	64355	0	12075	Delta,Omicron	131	103	15	617	376	10.547504025764894	8.293075684380032	1.2077294685990339
