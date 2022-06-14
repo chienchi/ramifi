@@ -114,7 +114,7 @@ cd tests
 The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into [IGV](https://software.broadinstitute.org/software/igv/).
 
 Example:
-![Deltacron](https://user-images.githubusercontent.com/737589/173489433-3b4d02c7-3c5e-4341-8e0f-79beb828f8e4.png)
+![Screen Shot 2022-06-13 at 9 51 08 PM](https://user-images.githubusercontent.com/737589/173489713-18150a0d-176b-4526-a751-5a03d2047096.png)
 
 ## Remove package:
 
