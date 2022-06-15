@@ -105,9 +105,34 @@ cd tests
 |HMVN7DRXY:2:2127:18304:18850 |  24058|24518| {24130: ['Omicron'], 24469: ['ref of Omicron'], 24503: ['Omicron']}                                                                                                                                                                           |  recombinant x   |
 |etc ...                      |
 
--- recombinant_reads.bam
+-- recombinant_reads_by_cross_region.tsv
 
--- recombinant_reads.bam.bai
+| Cross_region  | Reads                                                                                                       |
+|---------------|-------------------------------------------------------------------------------------------------------------|
+|11201-11283    |{'recomb1': ['HMVN7DRXY:2:2150:13015:23750', 'HMVN7DRXY:2:2124:23746:28776', 'HMVN7DRXY:2:2232:6216:33395']} |
+|11283-11314    |{'recomb2': ['HMVN7DRXY:2:2122:27624:23062']}                                                                |
+|11537-11544    |{'recomb2': ['HMVN7DRXY:2:2126:12825:30154', 'HMVN7DRXY:2:2126:15302:29121']}                                |
+|etc ...        |
+
+-- recombinant_reads.parent1.bam
+
+-- recombinant_reads.parent1.bam.bai
+
+-- recombinant_reads.parent2.bam
+
+-- recombinant_reads.parent2.bam.bai
+
+-- recombinant_reads.recomb1.bam
+
+-- recombinant_reads.recomb1.bam.bai
+
+-- recombinant_reads.recomb2.bam
+
+-- recombinant_reads.recomb2.bam.bai
+
+-- recombinant_reads.recombx.bam
+
+-- recombinant_reads.recombx.bam.bai
 
 ## Data visualization
 
