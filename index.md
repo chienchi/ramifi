@@ -134,11 +134,15 @@ cd tests
 
 -- recombinant_reads.recombx.bam.bai
 
+-- [recombinant_reads.mutations_af_plot.html](https://chienchi.github.io/ramifi/recombinant_reads.mutations_af_plot.html)
+
 ## Data visualization
 
 The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into [IGV](https://software.broadinstitute.org/software/igv/).
 
 Example:
+IGV Link: https://chienchi.github.io/ramifi/igv-webapp
+
 ![Screen Shot 2022-06-13 at 9 51 08 PM](https://user-images.githubusercontent.com/737589/173489713-18150a0d-176b-4526-a751-5a03d2047096.png)
 
 ## Remove package:
