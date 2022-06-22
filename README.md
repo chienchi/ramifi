@@ -103,7 +103,7 @@ cd tests
 |HMVN7DRXY:2:2215:29749:15217 |  22867|22994| {22917: ['Delta', 'Epsilon', 'Kappa'], 22992: ['ref of Omicron']}                                                                                                                                                                             |  parent Delta    |
 |HMVN7DRXY:2:2105:30572:25160 |  22865|23023| {22917: ['ref of Delta Epsilon Kappa'], 22992: ['ref of Omicron'], 22995: ['Delta', 'Omicron'], 23013: ['ref of Omicron']}                                                                                                                    |  recombinant 1   | 
 |HMVN7DRXY:2:2127:18304:18850 |  24058|24518| {24130: ['Omicron'], 24469: ['ref of Omicron'], 24503: ['Omicron']}                                                                                                                                                                           |  recombinant x   |
-|etc ...                      |
+|etc ...                      |       |     |
 
 -- recombinant_reads_by_cross_region.tsv
 
@@ -134,11 +134,15 @@ cd tests
 
 -- recombinant_reads.recombx.bam.bai
 
+-- [recombinant_reads.mutations_af_plot.html](https://chienchi.github.io/ramifi/recombinant_reads.mutations_af_plot.html)
+
 ## Data visualization
 
 The `recombinant_reads.bam`, `ramifi/data/variants_mutation.gff` and `ramifi/data/NC_045512.fasta` can be loaded into [IGV](https://software.broadinstitute.org/software/igv/).
 
 Example:
+IGV Link: [https://chienchi.github.io/ramifi/igv-webapp](https://chienchi.github.io/ramifi/igv-webapp)
+
 ![Screen Shot 2022-06-13 at 9 51 08 PM](https://user-images.githubusercontent.com/737589/173489713-18150a0d-176b-4526-a751-5a03d2047096.png)
 
 ## Remove package:
