@@ -61,6 +61,7 @@ optional arguments:
                         lineage mutation json file [default: variant_mutation.json]
   --variantMutation [FILE]
                         variant mutation json file [default: lineage_mutation.json]
+  --mutations_af_plot   generate mutations_af_plot
   --verbose             Show more infomration in log
 
 Input:
@@ -92,7 +93,7 @@ cd tests
 
 | total  | mapped | unmapped | mutation_reads | parents     | recomb1_reads | recomb2_reads | recombx_reads | parent1_reads | parent2_reads | recomb1_perc| recomb2_perc | recombx_perc |
 |--------|--------|----------|----------------|-------------|---------------|---------------|---------------|---------------|---------------|-------------|--------------|--------------|
-| 64355  | 64355  |   0      |  12075         |Delta,Omicron|   131         | 103           |     15        |  617          |     376       | 10.5475040  | 8.293075684  | 1.2077294685 |
+| 64355  | 64355  |   0      |  5203          |Omicron,Delta|   162         | 175           |     18        |  489          |     730       | 10.29       | 11.11        | 1.14         |
 
 
 -- recombinant_reads.tsv
