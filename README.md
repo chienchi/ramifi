@@ -61,7 +61,7 @@ optional arguments:
                         lineage mutation json file [default: variant_mutation.json]
   --variantMutation [FILE]
                         variant mutation json file [default: lineage_mutation.json]
-  --mutations_af_plot   generate mutations_af_plot
+  --mutations_af_plot   generate mutations_af_plot (when --vcf provided)
   --verbose             Show more infomration in log
 
 Input:
