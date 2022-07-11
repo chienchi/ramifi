@@ -110,11 +110,11 @@ cd tests
 
 -- recombinant_reads_by_cross_region.tsv
 
-| Cross_region  | Reads                                                                                                       |
-|---------------|-------------------------------------------------------------------------------------------------------------|
-|11201-11283    |{'recomb1': ['HMVN7DRXY:2:2150:13015:23750', 'HMVN7DRXY:2:2124:23746:28776', 'HMVN7DRXY:2:2232:6216:33395']} |
-|11283-11314    |{'recomb2': ['HMVN7DRXY:2:2122:27624:23062']}                                                                |
-|11537-11544    |{'recomb2': ['HMVN7DRXY:2:2126:12825:30154', 'HMVN7DRXY:2:2126:15302:29121']}                                |
+| Cross_region  | Reads                                                                                                                                                    |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+|11201-11283    |{"recomb1": ["HMVN7DRXY:2:2150:13015:23750", "HMVN7DRXY:2:2124:23746:28776", "HMVN7DRXY:2:2232:6216:33395"], "recomb2": ["HMVN7DRXY:2:2122:27624:23062"]} |
+|11283-11537    |{"recomb2": ["HMVN7DRXY:2:2126:12825:30154", "HMVN7DRXY:2:2126:15302:29121"]}                                                                             |
+|21618-21846    |{"recomb2": ["HMVN7DRXY:2:2153:21802:16078", "HMVN7DRXY:2:2105:22996:5682"]}                                                                              |
 |etc ...        |
 
 -- recombinant_reads.parent1.bam
@@ -138,6 +138,8 @@ cd tests
 -- recombinant_reads.recombx.bam.bai
 
 -- [recombinant_reads.mutations_af_plot.html](https://chienchi.github.io/ramifi/recombinant_reads.mutations_af_plot.html)
+
+-- [recombinant_reads.mutations_af_plot_genomeview.html](https://chienchi.github.io/ramifi/recombinant_reads.mutations_af_plot_genomeview.html)
 
 ## Data visualization
 
