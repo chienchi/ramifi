@@ -177,7 +177,7 @@ For example:
 }
 ```
 
-NCBI TRACE Linieage Definitions Update Site: [https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/](https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/)
+NCBI TRACE Lineage Definitions Weekly Update Site: [https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/](https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/)
 
 ## Remove package:
 
