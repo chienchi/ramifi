@@ -152,7 +152,7 @@ IGV Link: [https://chienchi.github.io/ramifi/igv-webapp](https://chienchi.github
 
 ## Custom mutation list
 
-User can custom mustaion list formated as same [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json) provided in the repo to check other variant/lineage co-infection/recombinant.
+User can custom mustaion list formated as same [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json) provided in the repo to check other variant/lineage co-infection/recombinant. When run ramifi, the custom mutation list will be taken in by the option flag `--variantMutation`.
 
 For example:
 ```
