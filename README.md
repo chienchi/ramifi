@@ -154,16 +154,7 @@ IGV Link: [https://chienchi.github.io/ramifi/igv-webapp](https://chienchi.github
 
 User can custom mustaion list formated as same [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json) provided in the repo to check other variant/lineage co-infection/recombinant.
 
-## Remove package:
-
-```
-pip uninstall ramifi
-```
-
-## Citing RAMIFI
-
-This work is currently unpublished. If you are making use of this package, we would appreciate if you gave credit to our repository.
-
+For example:
 ```
 {
     "Alpha": {
@@ -187,6 +178,17 @@ This work is currently unpublished. If you are making use of this package, we wo
 ```
 
 NCBI TRACE Linieage Definitions Update Site: [https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/](https://ftp.ncbi.nlm.nih.gov/pub/ACTIV-TRACE/)
+
+## Remove package:
+
+```
+pip uninstall ramifi
+```
+
+## Citing RAMIFI
+
+This work is currently unpublished. If you are making use of this package, we would appreciate if you gave credit to our repository.
+
 
 ## License
 
