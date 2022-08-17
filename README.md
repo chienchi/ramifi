@@ -2,6 +2,9 @@
 
 <ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ix-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) based on [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json)  provided in the repo and output recombinant and parents reads in .bam and .tsv file with associated stats file. 
 
+## Design Diagram
+<img width="2339" alt="Ramifi_design_diagram" src="https://user-images.githubusercontent.com/737589/185189578-9325a6e5-1ae7-493a-8a38-6f02fbed5963.png">
+
 ## Dependencies
 
 ### Programming/Scripting languages
