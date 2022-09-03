@@ -99,11 +99,11 @@ def setup_argparse():
         tsv_filename = "recombinant_reads.tsv"
         if argvs.ec19_projdir:
             argvs.tsv = os.path.join(argvs.ec19_projdir, 'ReadsBasedAnalysis',
-                                     'readsMappingToRef', tsv_filename)
+                                     'readsMappingToRef', 'MixedInfectionAnalysis', tsv_filename)
         else:
             argvs.tsv = tsv_filename
     if argvs.ec19_projdir and not argvs.igv:
-        argvs.igv = os.path.join('..', '..', 'IGV', 'ref_tracks', 'igv.html')
+        argvs.igv = os.path.join('..', '..', '..','IGV', 'ref_tracks', 'igv.html')
     if not argvs.outbam:
         argvs.outbam = os.path.splitext(argvs.tsv)[0] + ".bam"
     return argvs
@@ -1182,8 +1182,8 @@ def mutations_af_plot_genome(parents,nt_to_variants,nt_to_variants_af,nt_to_vari
     fig.write_image(output+'.png', width=1980, height=1080)
     return output
 
-def update_igv_html(two_parents_list,argvs):
-    igv_html_file = os.path.join(os.path.dirname(argvs.bam), argvs.igv)
+def update_igv_html(two_parents_list,reads_stats, argvs):
+    igv_html_file = os.path.join(os.path.dirname(argvs.tsv), argvs.igv)
     if not os.path.exists(igv_html_file):
         return
     update_igv_html_file = os.path.splitext(igv_html_file)[0] + '.recombreads.html'
@@ -1194,8 +1194,8 @@ def update_igv_html(two_parents_list,argvs):
         'type':'alignment', 
         'format': 'bam', 
         'colorBy': 'strand', 
-        'url': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recomb1.bam', 
-        'indexURL': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recomb1.bam.bai',
+        'url': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recomb1.bam', 
+        'indexURL': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recomb1.bam.bai',
         'squishedRowHeight': 10,
         'height': 250,
         'displayMode': 'SQUISHED' }
@@ -1204,8 +1204,8 @@ def update_igv_html(two_parents_list,argvs):
         'type':'alignment', 
         'format': 'bam', 
         'colorBy': 'strand', 
-        'url': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recomb2.bam', 
-        'indexURL': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recomb2.bam.bai',
+        'url': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recomb2.bam', 
+        'indexURL': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recomb2.bam.bai',
         'squishedRowHeight': 10,
         'height': 250,
         'displayMode': 'SQUISHED' }
@@ -1214,8 +1214,8 @@ def update_igv_html(two_parents_list,argvs):
         'type':'alignment', 
         'format': 'bam', 
         'colorBy': 'strand', 
-        'url': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recombx.bam', 
-        'indexURL': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.recombx.bam.bai',
+        'url': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recombx.bam', 
+        'indexURL': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.recombx.bam.bai',
         'squishedRowHeight': 10,
         'height': 250,
         'displayMode': 'SQUISHED' }
@@ -1224,8 +1224,8 @@ def update_igv_html(two_parents_list,argvs):
         'type':'alignment', 
         'format': 'bam', 
         'colorBy': 'strand', 
-        'url': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.parent1.bam', 
-        'indexURL': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.parent1.bam.bai',
+        'url': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.parent1.bam', 
+        'indexURL': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.parent1.bam.bai',
         'squishedRowHeight': 10,
         'height': 250,
         'displayMode': 'SQUISHED' }
@@ -1234,8 +1234,8 @@ def update_igv_html(two_parents_list,argvs):
         'type':'alignment', 
         'format': 'bam', 
         'colorBy': 'strand', 
-        'url': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.parent2.bam', 
-        'indexURL': '../ReadsBasedAnalysis/readsMappingToRef/recombinant_reads.parent2.bam.bai',
+        'url': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.parent2.bam', 
+        'indexURL': '../../ReadsBasedAnalysis/readsMappingToRef/MixedInfectionAnalysis/recombinant_reads.parent2.bam.bai',
         'squishedRowHeight': 10,
         'height': 250,
         'displayMode': 'SQUISHED' }
@@ -1265,14 +1265,19 @@ def update_igv_html(two_parents_list,argvs):
                     if 'name' in i and ('Recombinant' in i['name'] or 'Parent' in i['name'] or 'Variants Mutations' in i['name']):
                         pass
                     elif 'name' in i and (i['name'] == "NC_045512.2 Alignment" or i['name'] == "EC-19 Alignment" or i['name'] == "Alignment" ):
+                        new_tracks.append(i)
                         if argvs.igv_variants:
                             new_tracks.append(variants_track)
-                        new_tracks.append(recomb1_track)
-                        new_tracks.append(recomb2_track)
-                        new_tracks.append(recombx_track)
-                        new_tracks.append(parent1_track)
-                        new_tracks.append(parent2_track)
-                        new_tracks.append(i)
+                        if reads_stats['recomb1_reads'] > 0:
+                            new_tracks.append(recomb1_track)
+                        if reads_stats['recomb2_reads'] > 0:
+                            new_tracks.append(recomb2_track)
+                        if reads_stats['recombx_reads'] > 0:
+                            new_tracks.append(recombx_track)
+                        if reads_stats['parent1_reads'] > 0:
+                            new_tracks.append(parent1_track)
+                        if reads_stats['parent2_reads'] > 0:
+                            new_tracks.append(parent2_track)
                     else:
                         if 'showGenotypes' not in i:
                             new_tracks.append(i)
@@ -1396,7 +1401,7 @@ def main():
         mutations_af_plot(two_parents_list, filtered_nt_to_variants, filtered_nt_to_variants_af, filtered_nt_to_variants_dp, nt_to_aa_class, reads_stats, recomb_rate_by_index, parent_read_count_by_index, parent_pos_count,ec19_lineage, ec19_config, argvs)
         mutations_af_plot_genome(two_parents_list, filtered_nt_to_variants, filtered_nt_to_variants_af, filtered_nt_to_variants_dp, nt_to_aa_class, reads_stats, recomb_rate_by_pos, parent_pos_count, ec19_lineage, ec19_config, argvs)
     if argvs.igv:
-        update_igv_html(two_parents_list,argvs)
+        update_igv_html(two_parents_list,reads_stats,argvs)
     # else:
         #logging.error(f"both parents need at least have two muations {parents_variant}.")
     
