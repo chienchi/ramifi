@@ -52,6 +52,8 @@ def setup_argparse():
     parser.add_argument('--maxMixAF',metavar='[FLOAT]',required=False, type=float, default=0.8, help="maximum alleic frequency for checking mixed mutations on vcf [default:0.8]")
     parser.add_argument('--minMixed_n',metavar='[INT]',required=False, type=int, default=6, help="threshold of mixed mutations count for vcf.")
     parser.add_argument('--minReadCount',metavar='[INT]',required=False, type=int, default=10, help="threshold of read with variant count when no vcf provided.")
+    parser.add_argument('--minRecombReadCount',metavar='[INT]',required=False, type=int, default=5, help="minimum recombinant reads count in a region [default:5]")
+    parser.add_argument('--minRecombRate',metavar='[FLOAT]',required=False, type=float, default=0.1, help="minimum recombinant rate in a region [default:0.1]")
     parser.add_argument(
         '--lineageMutation', metavar='[FILE]', required=False, type=str, help=f"lineage mutation json file [default: variant_mutation.json]")
     parser.add_argument(
@@ -386,7 +388,7 @@ def find_recomb(mutation_reads, reads_coords, two_parents_list, reads_stats, arg
     reads_has_two_and_more_mutations_count = 0
     cross_region=defaultdict(lambda: defaultdict(list))
     parent_pos_count = dict()
-
+    total_dist = 0
     for read in mutation_reads:
         list_for_check_recomb=[]
         list_for_check_recomb_pos=[]
@@ -436,6 +438,8 @@ def find_recomb(mutation_reads, reads_coords, two_parents_list, reads_stats, arg
                             recomb1_end = list_for_check_recomb_pos[r]
                             break
                     cross_region[f"{recomb1_start}-{recomb1_end}"]['recomb1'].append(read)
+                    dist = int(recomb1_end) - int(recomb1_start) + 1
+                    total_dist = dist + total_dist
                 elif 'P1' == list_for_check_recomb[0] and (list_for_check_recomb != sorted(list_for_check_recomb) ):
                     recombx_reads.append(read)
                 if 'P2' == list_for_check_recomb[0] and (list_for_check_recomb == sorted(list_for_check_recomb, reverse=True) ):
@@ -449,6 +453,8 @@ def find_recomb(mutation_reads, reads_coords, two_parents_list, reads_stats, arg
                             recomb2_end = list_for_check_recomb_pos[r]
                             break
                     cross_region[f"{recomb2_start}-{recomb2_end}"]['recomb2'].append(read)
+                    dist = int(recomb2_end) - int(recomb2_start) + 1
+                    total_dist = dist + total_dist
                 elif 'P2' == list_for_check_recomb[0] and (list_for_check_recomb != sorted(list_for_check_recomb, reverse=True) ):
                     recombx_reads.append(read)
 
@@ -515,6 +521,7 @@ def find_recomb(mutation_reads, reads_coords, two_parents_list, reads_stats, arg
     reads_stats['recomb1_perc'] = len(recomb1_reads)/total_recomb_paraents_reads * 100 if total_recomb_paraents_reads > 0 else 0
     reads_stats['recomb2_perc'] = len(recomb2_reads)/total_recomb_paraents_reads * 100 if total_recomb_paraents_reads > 0 else 0
     reads_stats['recombx_perc'] = len(recombx_reads)/total_recomb_paraents_reads * 100 if total_recomb_paraents_reads > 0 else 0
+    #reads_stats['mean_dist'] = total_dist/(len(recomb1_reads) + len(recomb2_reads)) if (len(recomb1_reads) + len(recomb2_reads)) > 0 else 0
     logging.info(f"Reads with Variants Mutations (2+) : {reads_stats['mutation_reads']}")
     logging.info(f"Recombinants and Parents Reads count : {total_recomb_paraents_reads}")
     logging.info(f"Recombinant 1 Reads: {reads_stats['recomb1_reads']} ({reads_stats['recomb1_perc']:.2f}%)")
@@ -613,7 +620,7 @@ def mutations_af_plot(parents,nt_to_variants,nt_to_variants_af,nt_to_variants_dp
                     row=1,col=1
                 )
     else:
-        fig = make_subplots(rows=1,cols=2)
+        fig = make_subplots(rows=1,cols=2,specs=[[{"type": "xy"}, {"type": "pie"}]],column_widths=[0.9,0.2])
         main_row=1
     ## mutation scatter plot
     fig.add_trace(go.Scatter(
@@ -1292,7 +1299,8 @@ def calculate_recombinant_rate(cr_file,reads_stats,filtered_nt_to_variants,paren
     recomb_rate=list()
     df_cr= pd.read_table(cr_file,sep="\t")
     df_cr = df_cr.sort_values(by="Cross_region",key = lambda col: [ int(x.split("-")[0]) for x in col] )
-    mut_nt_pos = [ i.split(":")[1] for i in list(filtered_nt_to_variants.keys())]
+    filtered_nt_to_variants_list = list(filtered_nt_to_variants.keys())
+    mut_nt_pos = [ i.split(":")[1] for i in filtered_nt_to_variants_list ]
     recomb_read_count_by_index=dict()
     recomb_read_count_by_pos=dict()
     recomb_rate_by_pos=dict()
@@ -1303,7 +1311,7 @@ def calculate_recombinant_rate(cr_file,reads_stats,filtered_nt_to_variants,paren
         reads= json.loads(row['Reads'])
         recomb_read_count = 0
         for type, read in reads.items():
-                recomb_read_count = recomb_read_count + len(read)
+            recomb_read_count = recomb_read_count + len(read)
         index1 = mut_nt_pos.index(region.split('-')[0])
         index2 = mut_nt_pos.index(region.split('-')[1])
         parent_read_count_in_cr=0
@@ -1317,15 +1325,21 @@ def calculate_recombinant_rate(cr_file,reads_stats,filtered_nt_to_variants,paren
             recomb_read_count_by_index[index1 + i + 0.5] = recomb_read_count_by_index[index1 + i + 0.5] + recomb_read_count if (index1 + i + 0.5) in recomb_read_count_by_index else recomb_read_count
             parent_read_count_by_index[index1 + i + 0.5] = parent_read_count_by_index[index1 + i + 0.5] + avg_parent_read_count_in_cr if (index1 + i + 0.5) in parent_read_count_by_index else avg_parent_read_count_in_cr
     total_recomb_paraents_reads= reads_stats['parent1_reads'] + reads_stats['parent2_reads'] + reads_stats['recomb1_reads'] + reads_stats['recomb2_reads'] + reads_stats['recombx_reads'] 
-    recomb_rate_by_index = { i+0.5 : recomb_read_count_by_index[i+0.5]/total_recomb_paraents_reads if (i + 0.5) in recomb_read_count_by_index else 0 for i in range(len(mut_nt_pos)-1)}
+    recomb_rate_by_index = { i+0.5 : recomb_read_count_by_index[i+0.5]/(parent_read_count_by_index[i+0.5]+recomb_read_count_by_index[i+0.5]) if (i + 0.5) in recomb_read_count_by_index and (parent_read_count_by_index[i+0.5]+recomb_read_count_by_index[i+0.5]) > 0 else 0 for i in range(len(mut_nt_pos)-1)}
     recomb_rate_by_pos = { i:recomb_read_count_by_pos[i]/total_recomb_paraents_reads for i in recomb_read_count_by_pos}
     #cr_coord = list({ i  for x in df_cr.Cross_region for i in x.split('-') })
     tmp_output = os.path.splitext(argvs.tsv)[0] + ".recombinant_rate_pos.tsv"
     with open(tmp_output, "w") as f:
         for key, value in recomb_read_count_by_pos.items():
             rate = value/(parent_pos_count[key] + value) if key in parent_pos_count else 1.0
-            f.write(f"{key}\t{value}\t{rate}\n")
+            parent_depth = parent_pos_count[key] if key in parent_pos_count else 0
+            f.write(f"{key}\t{value}\t{parent_depth}\t{rate}\n")
 
+    for i in range(len(mut_nt_pos)-1):
+        if (i + 0.5) in recomb_read_count_by_index:
+            #logging.info(filtered_nt_to_variants_list[i] + "," + str(recomb_read_count_by_index[i + 0.5]) + "," + str(recomb_rate_by_index[i + 0.5]))
+            if (recomb_read_count_by_index[i + 0.5] >= argvs.minRecombReadCount) and (recomb_rate_by_index[i + 0.5] >= argvs.minRecombRate):
+                logging.info(f"There is hotspot of break point at region between {filtered_nt_to_variants_list[i]} and {filtered_nt_to_variants_list[i+1]} with {recomb_read_count_by_index[i + 0.5]} recombinant reads and {recomb_rate_by_index[i + 0.5]:.2%} recombinant rate.")
     return recomb_read_count_by_index, recomb_read_count_by_pos, parent_read_count_by_index
 
 def parse_lineage(txt):
