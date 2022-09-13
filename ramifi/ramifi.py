@@ -1250,7 +1250,7 @@ def update_igv_html(two_parents_list,reads_stats, argvs):
     with open(igv_html_file, 'r') as f:
         for line in f:
             if 'options =' in line:
-                if 'options = {"tr' in line or 'options = {"re' in line:
+                if 'options = {"tr' in line or 'options = {"re' in line or 'options = {"locus' in line:
                     options = [i.strip().replace(";","") for i in line.split("=")]
                     options_dict = json.loads(options[1])
                     createBrowser=""
