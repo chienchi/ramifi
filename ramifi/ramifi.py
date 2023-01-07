@@ -625,6 +625,10 @@ def mutations_af_plot(parents,nt_to_variants,nt_to_variants_af,nt_to_variants_dp
     for i in nt_to_variants:
         if i not in nt_to_lineage and len(nt_to_variants[i])>1:
             nt_to_lineage[i] = nt_to_variants[i]
+        if i in nt_to_lineage:
+            for vi in nt_to_variants[i]:
+                if vi not in nt_to_lineage[i]:
+                    nt_to_lineage[i].append(vi)
     igv_url = argvs.igv if argvs.igv else "igv.html" 
     color1='blue'
     color2='red'
@@ -799,6 +803,10 @@ def mutations_af_plot_genome(parents,nt_to_variants,nt_to_variants_af,nt_to_vari
     for i in nt_to_variants:
         if i not in nt_to_lineage and len(nt_to_variants[i])>1:
             nt_to_lineage[i] = nt_to_variants[i]
+        if i in nt_to_lineage:
+            for vi in nt_to_variants[i]:
+                if vi not in nt_to_lineage[i]:
+                    nt_to_lineage[i].append(vi)
     igv_url = argvs.igv if argvs.igv else "igv.html" 
     color1='blue'
     color2='red'
@@ -1242,7 +1250,7 @@ def update_igv_html(two_parents_list,reads_stats, argvs):
     if not os.path.exists(igv_html_file):
         return
     update_igv_html_file = os.path.splitext(igv_html_file)[0] + '.recombreads.html'
-    variants_gff = os.path.join(os.path.dirname(igv_html_file), 'variant_mutation.gff')
+    variants_gff = os.path.join(os.path.dirname(igv_html_file) , 'variant_mutation.gff')
     if argvs.igv_variants:
         cmd=[ os.path.join(bin_dir,'varJSonToGFF.py'), '--refacc', argvs.refacc, '--variantMutation', argvs.variantMutation, '--out', variants_gff ]
         process_cmd(cmd)
