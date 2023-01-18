@@ -195,7 +195,7 @@ This work is currently unpublished. If you are making use of this package, we wo
 
 ## License
 
-See the [LICENSE](https://github.com/chienchi/ramifi/blob/main/LICENSE) file included in the RAMIFI distribution.
+RAMIFI is distributed as open-source software under [GPLv3 LICENSE](https://github.com/chienchi/ramifi/blob/main/LICENSE) and the license file included in the RAMIFI distribution.
 
 LANL open source approval reference C22090.
 
