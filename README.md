@@ -1,3 +1,6 @@
+[![Python](https://img.shields.io/badge/python-3.8+-green.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # RAMIFI
 
 <ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ixed-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) based on [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json)  provided in the repo and output recombinant and parents reads in .bam and .tsv file with associated stats file. 
