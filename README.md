@@ -1,9 +1,15 @@
+[![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7569409.svg)](https://doi.org/10.5281/zenodo.7569409)
+[![PyPI version](https://badge.fury.io/py/ramifi.svg)](https://badge.fury.io/py/ramifi)
+
+
 # RAMIFI
 
 <ins>R</ins>ecombinant <ins>A</ins>nd <ins>M</ins>ixed-<ins>I</ins>nfection <ins>Fi</ins>nder for SARS-CoV-2 sample. It takes input from aligned bam file  (aligned to [NC_045512](https://github.com/chienchi/ramifi/blob/main/ramifi/data/NC_045512.fasta)) based on [defined mutation list json file](https://github.com/chienchi/ramifi/blob/main/ramifi/data/variant_mutation.json)  provided in the repo and output recombinant and parents reads in .bam and .tsv file with associated stats file. 
 
 ## Design Diagram
-<img width="2339" alt="Ramifi_design_diagram" src="https://user-images.githubusercontent.com/737589/185190223-913f57e6-6da2-4202-85e4-77fa9400429e.png">
+<img width="2339" alt="Ramifi_design_diagram" src="https://user-images.githubusercontent.com/737589/214627513-7848eae0-3ebd-4864-97cf-dd8e8b3ed416.png">
 
 ## Dependencies
 
@@ -24,11 +30,17 @@
 
 ## Installation
 
+### Install by pip
+
+```
+pip install ramifi
+```
+
 ### Install from source
 Clone the `ramifi` repository.
 
 ```
-git clone https://github.com/chienchi/ramifi
+git clone https://github.com/LANL-Bioinformatics/ramifi
 ```
 
 Then change directory to `ramifi` and install.
