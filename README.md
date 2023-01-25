@@ -30,6 +30,12 @@
 
 ## Installation
 
+### Install by pip
+
+```
+pip install ramifi
+```
+
 ### Install from source
 Clone the `ramifi` repository.
 
